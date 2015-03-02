@@ -22,6 +22,11 @@
         {% else %}
           <h1 class="entry-title">{% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}{% endif %}</h1>
         {% endif %}
+        
+        {% if page.excerpt %}
+          <blockquote>{{ page.excerpt }}</blockquote>
+        {% endif %}
+        
       </header>
       <footer class="entry-meta">
         {% if page.author %}
@@ -38,15 +43,24 @@
         {% if (site.owner.disqus-shortname and page.comments) or site.comments %}<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>{% endif %}
         {% if page.share %}{% include social-share.html %}{% endif %}
         {% if page.ads == true %}{% include ad-sidebar.html %}<!-- /.google-ads -->{% endif %}
+        
       </footer>
       <div class="entry-content">
+
+		<h2>Ingredients</h2>
+		<div class="list-group">
+  			{% for ingredient in page.ingredients %}
+  			  <a href="{{ingredient.url}}" target='_blank' class="list-group-item">
+  			  	<h4 class="list-group-item-heading">{{ingredient.title}}</h4>
+  			  	<p class="list-group-item-text">{{ingredient.text}}</p>
+  			  </a>
+  			{% endfor %}  
+		</div>
+		
+
         {{ content }}
         
-		<!-- Download link -->        
-        <div markdown="0" class="text-center" style='margin-top: 40px;'><a href="https://github.com/chefArchitect/swagger.ed/raw/master/chrome-ext/dist/swagger.ed.crx" class="btn" style='font-size: 28px; background-color: #f1c40f;'>Download the Chrome extension</a></div>
-        
-        
-        {% if (site.owner.disqus-shortname and page.comments) or site.comments %}
+	    {% if (site.owner.disqus-shortname and page.comments) or site.comments %}
           <div id="disqus_thread"></div><!-- /#disqus_thread -->
           {% include disqus_comments.html %}
         {% endif %}

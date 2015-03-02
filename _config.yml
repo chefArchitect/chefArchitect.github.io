@@ -5,7 +5,7 @@ locale: en_US
 description: Finger lickin good software recipes!
 logo: common/site-logo.png
 search: false
-url: http://chefArchitect.github.io
+url: http://chefarchitect.github.io
 
 # Jekyll configuration
 
@@ -36,8 +36,8 @@ owner:
   email: chrysanthos.spiliotopoulos@gmail.com
   disqus-shortname: thechefarchitect
   twitter: chefArchitect
-  github: https://github.com/chefArchitect/swagger.ed
-  linkedin: #username
+  github: https://github.com/chefArchitect
+  linkedin: chefarchitect
   google:
     analytics: UA-57180016-1
  
