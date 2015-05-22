@@ -20,7 +20,7 @@ Swagger.ed ships with a pre-built Chrome extension add-on that installs directly
 Click on the button to download the **swagger.ed** add-on.   
 
 
-<div markdown="0" class="text-center" style='margin-top: 40px;'><a href="https://github.com/chefArchitect/swagger.ed/raw/master/chrome-ext/dist/swagger.ed.crx" class="btn" style='font-size: 28px; background-color: #f1c40f;'>Download the Chrome extension</a></div>
+<div markdown="0" class="text-center" style='margin-top: 40px;'><a href="https://github.com/chefArchitect/swagger.ed/releases/download/{{ site.data.apispots.swaggered.artifact.version }}/swagger.ed.crx" class="btn" style='font-size: 28px; background-color: #f1c40f;'>Download the Chrome extension</a></div>
 
 Now, click on the Chrome menu (upper right side of the browser window) and go to **More Tools-> Extensions**.  The extensions page will open - drag-n-drop the **.crx** file anywhere onto the page.
 

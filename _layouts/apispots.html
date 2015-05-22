@@ -4,71 +4,7 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-
-<meta charset="utf-8">
-<title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
-{% if page.excerpt %}<meta name="description" content="{{ page.excerpt | strip_html }}">{% endif %}
-{% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
-{% if page.author %}
-  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
-{% endif %}
-
-{% include open-graph.html %}
-
-{% if site.owner.google.verify %}<!-- Webmaster Tools verfication -->
-<meta name="google-site-verification" content="{{ site.owner.google.verify }}">{% endif %}
-{% if site.owner.bing-verify %}<meta name="msvalidate.01" content="{{ site.owner.bing-verify }}">{% endif %}
-
-{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
-<link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
-
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Bootstrap -->
-<link rel="stylesheet" href="{{ site.url }}/assets/css/bootstrap.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- Theme -->
-<link rel="stylesheet" href="{{ site.url }}/assets/themes/creative/css/animate.min.css">
-<link rel="stylesheet" href="{{ site.url }}/assets/themes/creative/css/creative.css">
-
-
-
-<!-- Custom Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
-<meta http-equiv="cleartype" content="on">
-
-<!-- HTML5 Shiv and Media Query Support -->
-<!--[if lt IE 9]>
-  <script src="{{ site.url }}/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="{{ site.url }}/assets/js/vendor/respond.min.js"></script>
-<![endif]-->
-
-<!-- Modernizr -->
-<script src="{{ site.url }}/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
-
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="{{ site.url }}/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="{{ site.url }}/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.url }}/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.url }}/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.url }}/images/apple-touch-icon-144x144-precomposed.png">
-
-
-
+{% include head-apispots.html %}
 </head>
 
 <body id="page-top">
@@ -93,10 +29,13 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#manifest">Manifest</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#projects">Projects</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -113,7 +52,12 @@
             <div class="header-content-inner">
                 <h1>A collection of tools for the booming API economy</h1>
                 <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+                <p>
+                	The technology landscape has changed a lot in the recent years and now
+                	we are living the API Economy era which is starting to bloom.  APIs
+                	are becoming something more than just "geek" talk and will affect
+                	virtually everybody in the near future.
+                </p>
                 <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>
@@ -125,18 +69,22 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">We've got what you need!</h2>
                     <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
+                    <p class="text-faded">
+                    	API Spots is a collection of tools that are being designed for 
+                    	humans - doesn't matter if you code or not.  Everybody should
+                    	be able to understand and use APIs. 
+                    </p>
+                    <a href="#manifest" class="page-scroll btn btn-default btn-xl">Get Started!</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <section id="manifest">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
+                    <h2 class="section-heading">The Manifest</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -145,41 +93,49 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                        <h3>Sturdy Templates</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                        <i class="fa fa-4x fa-users wow bounceIn text-primary"></i>
+                        <h3>Made for Humans</h3>
+                        <p class="text-muted">Everyone has the right to understand and use APIs.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Ready to Ship</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                        <i class="fa fa-4x fa-plug wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Plug and Play</h3>
+                        <p class="text-muted">No coding skills necessary. Download and use directly.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
                         <h3>Up to Date</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
+                        <p class="text-muted">Technology is changing and so will you.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
                         <h3>Made with Love</h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
+                        <p class="text-muted">When you give love, you get more love back!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="no-padding" id="portfolio">
+    <section class="no-padding" id="projects">
+    	<div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">The Tools</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="{{ site.url }}/apispots/swagger.ed" class="portfolio-box">
+                    <a href="{{ site.url }}/apispots/swaggered" class="portfolio-box">
                         <img src="{{ site.url }}/images/apispots/swagger-graph1.png"  class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -214,10 +170,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Soon to come
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    Stay tuned...
                                 </div>
                             </div>
                         </div>
@@ -236,7 +192,6 @@
                     <h2 class="section-heading">Let's Get In Touch!</h2>
                     <hr class="primary">
                     {% include footer.html %}
-<!--                     <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p> -->
                 </div>
             </div>
         </div>
