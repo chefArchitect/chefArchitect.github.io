@@ -1,5 +1,8 @@
 # Site navigation links
 
+- title: API Spots
+  url: /apispots/
+
 - title: Recipes
   url: /recipes/
 
