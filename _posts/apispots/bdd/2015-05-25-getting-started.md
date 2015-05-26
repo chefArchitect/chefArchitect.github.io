@@ -124,6 +124,6 @@ The browser should display the RESTful API endpoints of the service on the [Swag
     </p>
 </div>
 
-If what you see on your browser looks like what is shown in the image above, then you're all set! Time to [move on and start doing some real testing]({{site.url}}/apispots/bdd/basic-concepts).
+If what you see on your browser looks like what is shown in the image above, then you're all set! Time to [learn the basic concepts]({{site.url}}/apispots/bdd/basic-concepts).
 
 

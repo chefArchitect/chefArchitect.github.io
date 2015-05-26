@@ -1,0 +1,9 @@
+.hljs {
+	background:transparent!important;
+}
+
+.bs-docs-header, .bs-docs-masthead {
+	background-color: #d35400!important;
+	background-image: none;
+	color: #ecf0f1!important;
+}
