@@ -188,7 +188,32 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Let's Get In Touch!</h2>
                     <hr class="primary">
-                    {% include footer.html %}
+                    
+                    <p>
+						Designed and built by the <a
+							href="https://twitter.com/chefArchitect" target="_blank">@chefArchitect</a>
+							
+						<a href="https://twitter.com/chefArchitect" class="twitter-follow-button" data-show-count="true">Follow @chefArchitect</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
+					</p>
+					
+					<div class="social-icons">
+						{% if site.owner.twitter %}<a href="http://twitter.com/{{ site.owner.twitter }}" title="{{ site.owner.name}} on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>{% endif %}
+						{% if site.owner.linkedin %}<a href="http://linkedin.com/in/{{ site.owner.linkedin }}" title="{{ site.owner.name}} on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>{% endif %}
+						{% if site.owner.github %}<a href="{{ site.owner.github }}" title="{{ site.owner.name}} on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>{% endif %}
+					  <a href="{{ site.url }}/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+					</div>
+					
+					<span>Special thanks to </span>
+					<ul class="list-inline">
+					  <li class="footer-menu-divider">⋅</li>	
+					{% for credit in site.data.credits.apispots %}
+					  <li><a href="{{ credit.url }}" target='_blank'>{{ credit.name }}</a></li>
+					  <li class="footer-menu-divider">⋅</li>
+					{% endfor %}
+					</ul>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -196,8 +221,6 @@
     </aside>
 
  
-
-
 	<!-- jQuery -->
     <script src="{{ site.url }}/assets/themes/creative/js/jquery.js"></script>
 
@@ -212,6 +235,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ site.url }}/assets/themes/creative/js/creative.js"></script>
 
+	{% include ga.html %}
+	
 </body>
 
 </html>

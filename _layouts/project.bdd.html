@@ -34,8 +34,16 @@
 			            <li><a href="{{ site.url }}/apispots/bdd/swagger-petstore-api/">Swagger Petstore API</a></li>
 			          </ul>
 			        </li>
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cookbook <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			            <li><a href="#">Coming soon...</a></li>
+			          </ul>
+			        </li>
 				</ul>
-
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{{site.url}}/apispots">The API Spots</a></li>
+				</ul>
 			</nav>
 		</div>
 	</header>
@@ -70,9 +78,73 @@
 	{{content}}
 
 	</div>
-	
+
 	{% endif %}
-	
+
+
+	<footer class="bs-docs-footer" role="contentinfo">
+		<div class="container">
+			<div class="bs-docs-social">
+				<ul class="bs-docs-social-buttons">
+					<li><iframe class="github-btn"
+							src="http://ghbtns.com/github-btn.html?user=chefArchitect&amp;repo=apispots-testing-bdd&amp;type=watch&amp;count=true"
+							width="100" height="20" title="Star on GitHub"></iframe></li>
+					<li><iframe class="github-btn"
+							src="http://ghbtns.com/github-btn.html?user=chefArchitect&amp;repo=apispots-testing-bdd&amp;type=fork&amp;count=true"
+							width="102" height="20" title="Fork on GitHub"></iframe></li>
+					<li>
+						<a href="https://twitter.com/chefArchitect" class="twitter-follow-button" data-show-count="true">Follow @chefArchitect</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+					</li>
+					
+				</ul>
+			</div>
+
+
+			<p>
+				Designed and built by the <a
+					href="https://twitter.com/chefArchitect" target="_blank">@chefArchitect</a>
+			
+			</p>
+			
+			<div class="social-icons">
+				{% if site.owner.twitter %}<a href="http://twitter.com/{{ site.owner.twitter }}" title="{{ site.owner.name}} on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>{% endif %}
+				{% if site.owner.linkedin %}<a href="http://linkedin.com/in/{{ site.owner.linkedin }}" title="{{ site.owner.name}} on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>{% endif %}
+				{% if site.owner.github %}<a href="{{ site.owner.github }}" title="{{ site.owner.name}} on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>{% endif %}
+			  <a href="{{ site.url }}/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+			</div>
+			
+			<span>Special thanks to </span>
+			<ul class="list-inline">
+			  <li class="footer-menu-divider">⋅</li>	
+			{% for credit in site.data.credits.bdd %}
+			  <li><a href="{{ credit.url }}" target='_blank'>{{ credit.name }}</a></li>
+			  <li class="footer-menu-divider">⋅</li>
+			{% endfor %}
+			</ul>
+			
+			<p>
+				Code licensed under <a rel="license"
+					href="https://github.com/twbs/bootstrap/blob/master/LICENSE"
+					target="_blank">MIT</a>, documentation under <a rel="license"
+					href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC
+					BY 3.0</a>.
+			</p>
+			
+			<ul class="bs-docs-footer-links text-muted">
+				<li>Currently v0.0.1</li>
+				<li>·</li>
+				<li><a href="https://github.com/chefArchitect/apispots-testing-bdd">GitHub</a></li>
+				<li>·</li>
+				<li>Powered by the <a href="{{site.url}}/apispots">API Spots</a></li>
+			</ul>
+			
+
+			
+		</div>
+	</footer>
+
+
 	<!-- jQuery -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -82,8 +154,9 @@
 
 	<!-- highlight.js -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
-	<script src="{{ site.url }}/assets/js/plugins/gherkin_en.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
+	
+	{% include ga.html %}
 	
 </body>
 
