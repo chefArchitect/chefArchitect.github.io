@@ -12,7 +12,7 @@ tags: [apispots,bdd,testing]
 # Testing an API
 {:class="page-header"}
 
-In this section you will how to start using the **BDD API Testing** service for running tests against a RESTful API.  
+In this section you will learn how to start using the **BDD API Testing** service for running tests against a RESTful API.  
 {:class="lead"}
 
 For this first example, we will be using the [**OpenWeatherMap** API](http://openweathermap.org/api){:target='_blank'} that is an open weather forecast service.
@@ -64,7 +64,7 @@ Now that we know the target API and the feature we want to test, it's time to le
 
 > http://api.openweathermap.org/data/2.5
 
-Note that this is a versioned API and how this reflects to the URL (the */2.5* part that is).  Our service needs to know about this, so let's add another section in our test file:
+Note that this is a versioned API and this reflects to the URL (the */2.5* part that is).  Our service needs to know about this, so let's add another section in our test file:
 
 <div class="bs-example">
 The background section is an important part of the service - in Gherkin a <b>Background</b> section is executed prior to any of the test scenarios to follow and is a convenient way of re-using a number of steps that are required to be executed before hand prior to any other step within a test feature file.  
@@ -89,7 +89,7 @@ Now that we have defined the API to be tested, it's time to write our first scen
 From the documentation we can see that the current weather feature is provided through the **/weather** endpoint and to get the weather data for a specific city we have to call the **GET** method passing a query string with the city name and optionally the country code as the request params.
 
 <div class="bs-example">
-Copy and paste the following scenario in the feature file.      
+<b>Scenario</b>: Get current weather data for one location and by city name      
 </div>
 <div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
   Scenario: Call current weather data for one location and by city name
@@ -125,6 +125,29 @@ The **Then** section defines assertions for validating the results of the operat
 
 Now that we have created our very basic test scenario, it's time to run it through the service and see what happens.  Since the service provides it's own RESTful API there are two ways to do it.
 
+<div class="bs-example">
+Your test file should look something like this.
+</div>
+<div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
+Feature: OpenWeatherMap API - Current weather data
+  
+  As a client of the OpenWeatherMap API
+  I want to run tests
+  In order to validate 'Current weather data' operations
+
+  Background: 
+    Given a "REST" API definition at "http://api.openweathermap.org/data/2.5"
+    
+  Scenario: Get current weather data for one location and by city name
+
+    Given endpoint "/weather" and method "get"
+    And request query param "q" equals "London,UK"
+    And request type "application/json"
+    When the request is executed
+    Then response status is "ok"
+</code></pre></div>
+
+
 ### Use Swagger Explorer
 
 You can interact with the service directly through the Swagger Explorer application running at 
@@ -143,7 +166,7 @@ Feature: OpenWeatherMap API - Current weather data
   In order to validate 'Current weather data' operations
 
 
-  Scenario: Call current weather data for one location and by city name      
+  Scenario: Get current weather data for one location and by city name      
     Given a "REST" API definition at "http://api.openweathermap.org/data/2.5"
     Given endpoint "/weather" and method "get"
     And request query param "q" equals "London,UK"
@@ -164,6 +187,17 @@ Feature: OpenWeatherMap API - Current weather data
 
 You can use any other REST client tool you wish, e.g. [**curl**](http://curl.haxx.se/){:target='_blank'}.  Good thing about using *curl* is that you will get to see the test results in ANSI colors on the terminal, which is much simpler to read.  For example:
 
+<div class="bs-callout bs-callout-info" id="jquery-required">
+    <h4 id="jquery-required">Service logs</a></h4>
+    <p>
+    Since we launched the service as a background process, there will be no logs printed out in this terminal window.  In order to view any logging
+    activity from the service, you should run the following command on either the same or a different terminal window:
+    </p>
+    
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">
+<span class="gp">$ </span> docker logs -f apispots-bdd
+</code></pre></div></div>
+
 <div class="bs-example">
 <span class="gp">$ </span> curl -i -F file=@/home/chris/tests/openweathermap.current.feature  http://localhost:3000/tests/run
 </div>
@@ -175,7 +209,7 @@ Feature: OpenWeatherMap API - Current weather data
   In order to validate 'Current weather data' operations
 
 
-  Scenario: Call current weather data for one location and by city name       # tmp/1432662589705-29129-2d1673fc61776d54:11
+  Scenario: Get current weather data for one location and by city name        # tmp/1432662589705-29129-2d1673fc61776d54:11
     Given a "REST" API definition at "http://api.openweathermap.org/data/2.5" # tmp/1432662589705-29129-2d1673fc61776d54:9
     Given endpoint "/weather" and method "get"                                # tmp/1432662589705-29129-2d1673fc61776d54:13
     And request query param "q" equals "London,UK"                            # tmp/1432662589705-29129-2d1673fc61776d54:14
@@ -188,3 +222,122 @@ Feature: OpenWeatherMap API - Current weather data
 6 steps (6 passed)
 </code></pre></div>  
 
+So what we have actually achieved so far is to create a very basic API feature test from scratch, execute a test scenario against the target API and verify that the server response was what we expected.  We got the green light from the service that all test steps have successfully passed.  
+
+<div class="bs-callout bs-callout-info">
+    <h4 id="jquery-required">Background steps</a></h4>
+    <p>As you can see from the results, steps defined in the background section are executed <b>before</b> any scenario steps and this happens for every scenario.</p>
+</div>
+
+
+## Let's add another scenario
+
+Now that the test file has been scaffolded, let's extend our test foundation.  This time we will try a different feature the **Current Weather** endpoint provides - get the current weather by geographic coordinates.  Remember we are following the [API documentation flow](http://openweathermap.org/current){:target='_blank'} and we validate that what the provider states is true ;)
+
+According to the docs, this operation requires 2 request params [*lat* & *lon*] which is the *latitude* and *longitude* of the location respectively.  Also, this time we will be checking that the API response contains certain attributes within the returned JSON structure.
+
+<div class="bs-example">
+<b>Scenario</b>: Get current weather data for one location and by city name      
+</div>
+<div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
+  Scenario: Get current weather data for one location and by geographic coordinates
+    Given endpoint "/weather" and method "get"
+    And request query params
+      | param | value |
+      | lat   | 35    |
+      | lon   | 139   |
+    And request type "application/json"
+    When the request is executed
+    Then response status is "ok"
+    And response body has attributes
+      | attribute | value      |
+      | coord.lat | 35         |
+      | coord.lon | 139        |
+      | name      | 'Shuzenji' |
+</code></pre></div>
+
+Run the test again using your favorite method - it should pass.  As you see we have introduced some new ingredients in our test recipe:
+
+### Request parameter map 
+
+<div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
+    And request query params
+      | param | value |
+      | lat   | 35    |
+      | lon   | 139   |
+</code></pre></div>
+
+This is a shortcut predefined step that allows us to pass a table of 1 or more [parameter / value] pairs that will be added to the request as query parameters.  The table format is standard Gherkin syntax and the column names are reserved by our service. Here we are passing the 2 required params with numeric values.
+
+### Response data assertion map 
+
+<div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
+    And response body has attributes
+      | attribute | value      |
+      | coord.lat | 35         |
+      | coord.lon | 139        |
+      | name      | 'Shuzenji' |
+</code></pre></div>
+
+This is an assertion step that validates against the API response body.  The response is returned in JSON format and the table above will check if each body attribute in turn matches the provided value.  Since we know what the service operation is expected to return (format and data wise) this step will run assertions on the predefined attributes, using the correct data types.  Notice how the *name* attribute value is enclosed in **''**.  This tells the service that the assertion should compare strings.
+
+## Using tags (@) for running specific test sections
+
+The underlying **Cucumber** framework supports [tagging test sections](https://cucumber.io/docs/reference#tags){:target='_blank'} using the '@' prefix.  This is very useful while writing tests, since many times you may want to execute one or more specific test features / scenarios without having to run the full test from the beginning.
+
+In order to annotate a test section use a tag name with the '@' character as prefix, e.g. **@dev** in the test file.
+
+<div class="bs-example">
+Tagging test sections     
+</div>
+<div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
+Feature: OpenWeatherMap API - Current weather data
+  
+  As a client of the OpenWeatherMap API
+  I want to run tests
+  In order to validate 'Current weather data' operations
+
+  Background: 
+    Given a "REST" API definition at "http://api.openweathermap.org/data/2.5"
+
+  Scenario: Get current weather data for one location and by city name
+    Given endpoint "/weather" and method "get"
+    And request query param "q" equals "London,UK"
+    And request type "application/json"
+    When the request is executed
+    Then response status is "ok"
+  
+  @dev	
+  Scenario: Get current weather data for one location and by geographic coordinates
+    Given endpoint "/weather" and method "get"
+    And request query params
+      | param | value |
+      | lat   | 35    |
+      | lon   | 139   |
+    And request type "application/json"
+    When the request is executed
+    Then response status is "ok"
+    And response body has attributes
+      | attribute | value      |
+      | coord.lat | 35         |
+      | coord.lon | 139        |
+      | name      | 'Shuzenji' |
+</code></pre></div>      
+
+You can use as many tags as you want within a test file.  When you are about to run the test, speficy the tags you wish to be executed during the test run as shown in the following examples:
+
+### Swagger Explorer
+
+In Swagger Explorer fill in the **tags** form param value using a comma-separated list of tag names (including the @ prefix) as shown below:
+
+![Tags in Swagger Explorer]({{site.url}}/assets/apispots/bdd/tagging.png "Tags in Swagger Explorer"){:class='img-thumbnail'}
+
+### REST client tools
+
+If using other REST client tools, pass the tags as a form parameter, e.g. using **curl**
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">
+$ curl -i -F file=@/home/chris/tests/openweathermap.current.feature -F tags=%40dev  http://localhost:3000/tests/run
+</code></pre></div> 
+
+Now let's move on to another example to see how we can test a [Swagger powered API]({{site.url}}/apispots/bdd/swagger-petstore-api).
