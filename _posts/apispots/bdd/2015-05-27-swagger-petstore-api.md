@@ -344,20 +344,6 @@ Checking if user details have been updated.
 
 If everything worked as expected, all tests should pass with no errors.
 
-<div class="bs-callout bs-callout-warning">
-    <h4>Fun fact - great lesson!</a></h4>
-    <p>
-    	During the initial development of the service, the Petstore API test scenarios would initially pass with no problems.  One sunny day though, some of these tests started failing returning <b>Internal server error 500</b>.  Name it coincidence, but the tests failed during the transition of the Swagger project from <a href='https://helloreverb.com' target='_blank'>Reverb</a> to <a href='http://smartbear.com' target='_blank'>SmartBear</a>.  We love you guys - shit happens ;) 
-    </p>
-    <p>
-    This story teaches us the following:
-    <ul>
-    	<li>Never put blind trust on any system - even if it's yours</li>
-    	<li>Always use an automated process for running your tests at standard intervals</li>
-    	<li>Extend your test scenarios in an organic way in order to make sure that existing functionality is covered and new features can be accomodated with no issues</li>
-    </ul>
-    </p>
-</div>
 
 ## The Full Monty
 
