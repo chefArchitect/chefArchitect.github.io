@@ -40,7 +40,7 @@ Let's suppose we are prospect clients of this API and we want to make sure that 
 
 The API structure is pretty much self explanatory, so let's give it a spin by testing the **Current weather data** feature.    
 
-<div class="bs-example">
+<div class="bs-example feature">
    Copy and paste the following Gherkin snippet into the feature file.  This section is the feature title and a short description on what this 
    test is all about. 
 </div>
@@ -66,7 +66,7 @@ Now that we know the target API and the feature we want to test, it's time to le
 
 Note that this is a versioned API and this reflects to the URL (the */2.5* part that is).  Our service needs to know about this, so let's add another section in our test file:
 
-<div class="bs-example">
+<div class="bs-example background">
 The background section is an important part of the service - in Gherkin a <b>Background</b> section is executed prior to any of the test scenarios to follow and is a convenient way of re-using a number of steps that are required to be executed before hand prior to any other step within a test feature file.  
 </div>
 <div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
@@ -88,7 +88,7 @@ Now that we have defined the API to be tested, it's time to write our first scen
 
 From the documentation we can see that the current weather feature is provided through the **/weather** endpoint and to get the weather data for a specific city we have to call the **GET** method passing a query string with the city name and optionally the country code as the request params.
 
-<div class="bs-example">
+<div class="bs-example scenario">
 <b>Scenario</b>: Get current weather data for one location and by city name      
 </div>
 <div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
@@ -125,7 +125,7 @@ The **Then** section defines assertions for validating the results of the operat
 
 Now that we have created our very basic test scenario, it's time to run it through the service and see what happens.  Since the service provides it's own RESTful API there are two ways to do it.
 
-<div class="bs-example">
+<div class="bs-example recipe">
 Your test file should look something like this.
 </div>
 <div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
@@ -236,7 +236,7 @@ Now that the test file has been scaffolded, let's extend our test foundation.  T
 
 According to the docs, this operation requires 2 request params [*lat* & *lon*] which is the *latitude* and *longitude* of the location respectively.  Also, this time we will be checking that the API response contains certain attributes within the returned JSON structure.
 
-<div class="bs-example">
+<div class="bs-example scenario">
 <b>Scenario</b>: Get current weather data for one location and by city name      
 </div>
 <div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">
@@ -287,7 +287,7 @@ The underlying **Cucumber** framework supports [tagging test sections](https://c
 
 In order to annotate a test section use a tag name with the '@' character as prefix, e.g. **@dev** in the test file.
 
-<div class="bs-example">
+<div class="bs-example recipe">
 Tagging test sections     
 </div>
 <div class="highlight"><pre><code class="gherkin" data-lang="gherkin_en">

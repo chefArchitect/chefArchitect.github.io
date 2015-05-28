@@ -21,6 +21,14 @@ body {
 	content: 'Recipe'
 }
 
+.bs-example.feature:after {
+	content: 'Feature'
+}
+
+.bs-example.background:after {
+	content: 'Background'
+}
+
 .bs-example.scenario:after {
 	content: 'Scenario'
 }
@@ -29,6 +37,13 @@ body {
 	content: 'Ingredient'
 }
 
+.bs-example.swagger-api:after {
+	content: 'Swagger API'
+}
+
+.bs-example.swagger-api:after {
+	content: 'REST API'
+}
 .step-definition {
 	color: #9b59b6;
 }
