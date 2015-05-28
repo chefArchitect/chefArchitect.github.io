@@ -29,6 +29,13 @@ Since we know our target API has a valid Swagger definition, we want to make use
 
 In our example we will consider these to be discreet features, therefore we will be creating separate feature test files for testing them autonomously.
 
+<div class="bs-callout bs-callout-info">
+    <h4>Heads Up!</a></h4>
+    <p>
+    	The service supports parsing of both <b>v1.2</b> and <b>v2.x</b> Swagger specifications.  When providing a definition URL, it first tries to parse it using the v2.x parser and if it fails then as a fallback tries parsing using the v1.2 parser. 
+    </p>
+</div>
+
 ## Testing the User endpoints
 
 We will start off by creating a feature test file for testing operations on the User resource collection.  Let's call our test file **petstore.users.feature**. 
