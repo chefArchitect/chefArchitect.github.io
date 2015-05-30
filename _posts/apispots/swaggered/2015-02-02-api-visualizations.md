@@ -1,5 +1,5 @@
 ---
-layout: feature
+layout: project.swaggered.feature
 title: Swagger powered API Visualizations
 excerpt: "View visual representation of APIs with a click"
 categories: apispots/swaggered

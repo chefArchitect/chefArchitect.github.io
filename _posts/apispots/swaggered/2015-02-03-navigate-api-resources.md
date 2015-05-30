@@ -1,5 +1,5 @@
 ---
-layout: feature
+layout: project.swaggered.feature
 title: Navigate API resources
 excerpt: "Navigate the full API graph and see how resources are interconnected."
 categories: apispots/swaggered

@@ -1,5 +1,5 @@
 ---
-layout: feature
+layout: project.swaggered.feature
 title: Support for both v1.2 and v2.0 Swagger formats
 excerpt: "Navigate the full API graph and see how resources are interconnected."
 categories: apispots/swaggered
@@ -18,3 +18,5 @@ share: false
 
 When you navigate with the browser to a URL that contains a valid **JSON** or **YAML** document,  **swagger.ed** checks if it is a valid
 Swagger document, first by using the latest v2.0 parser from [**James Messinger**](https://github.com/BigstickCarpet/swagger-parser/blob/master/tests/index.html "Swagger v2.0 parser") and if it fails to parse the document, then tries once more using the v1.2 -> v2.0 converter module from [**Apigee**](https://github.com/apigee-127/swagger-converter "Swagger v1.2 -> v2.0 converter").
+
+<div markdown="0"  class="text-center"><a href="{{ site.url }}/apispots/swaggered/apis-json-support/" class="btn">Explore API catalogs</a></div>

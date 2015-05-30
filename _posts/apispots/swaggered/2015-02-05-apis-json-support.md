@@ -1,5 +1,5 @@
 ---
-layout: feature
+layout: project.swaggered.feature
 title: Support for APIs.json catalogs
 excerpt: "Navigate API catalogs defined with the APIs.json format."
 categories: apispots/swaggered
